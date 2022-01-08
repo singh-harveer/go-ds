@@ -49,6 +49,7 @@ func (t *Trie) Search(word string) bool {
 	return currentNode.isEnd
 }
 
+// New create new trie object.
 func New() *Trie {
 	return &Trie{
 		root: &Node{},
