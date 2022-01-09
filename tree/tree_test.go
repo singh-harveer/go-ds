@@ -2,7 +2,6 @@ package tree_test
 
 import (
 	"golang/ds/tree"
-	"math/rand"
 	"testing"
 )
 
@@ -10,8 +9,7 @@ func TestInsertAndSearch(t *testing.T) {
 	t.Parallel()
 	var bst = tree.NewBinary()
 
-	for i := 0; i < 20; i++ {
-		var value = rand.Intn(500)
+	for _, value := range []int{50, 7, 9, 60, 59, 61} {
 		bst.Insert(value)
 	}
 
@@ -42,6 +40,7 @@ func TestInsertAndSearch(t *testing.T) {
 
 			bst.Insert(tc.in)
 			var got = bst.Search(tc.v)
+			bst.LevelOrderTraversal()
 
 			if got != tc.want {
 				t.Fatalf("got %v want %v", got, tc.want)
