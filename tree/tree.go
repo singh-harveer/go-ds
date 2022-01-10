@@ -37,17 +37,17 @@ func (b *Binary) Insert(value int) {
 
 // Height calculates height of tree.
 func (b *Binary) Height() int {
-	return binaryTreeHeight(b.root)
+	return height(b.root)
 
 }
 
-func binaryTreeHeight(root *Node) int {
+func height(root *Node) int {
 	if root == nil {
 		return 0 // height of empty tree.
 	}
 
-	var lHeight = binaryTreeHeight(root.left)
-	var rHeight = binaryTreeHeight(root.right)
+	var lHeight = height(root.left)
+	var rHeight = height(root.right)
 	return int(math.Max(float64(lHeight), float64(rHeight))) + 1
 
 }
@@ -99,6 +99,24 @@ func (b *Binary) PreOrderTraversal() {
 // InOrderTraversal binary tree PostOrder traversal implementation.
 func (b *Binary) PostOrderTraversal() {
 	postOrderTraversal(b.root)
+}
+
+// ConvertToMirrorImage convert given binary tree to it's mirror image.
+// validate - in order traversal of mirror image whould reverse of normal tree.
+func (b *Binary) ConvertToMirrorImage() {
+	mirrorImageOfBinaryTree(b.root)
+}
+
+func mirrorImageOfBinaryTree(node *Node) {
+	if node == nil {
+		return
+	}
+	mirrorImageOfBinaryTree(node.left)
+	mirrorImageOfBinaryTree(node.right)
+	// swap left and right node
+	var temp = node.left
+	node.right = node.left
+	node.left = temp
 }
 
 func postOrderTraversal(root *Node) {
