@@ -1,18 +1,16 @@
-package tree_test
+package bst_test
 
 import (
-	"golang/ds/tree"
-	"math/rand"
+	"golang/ds/tree/bst"
 	"testing"
 )
 
 func TestInsertAndSearch(t *testing.T) {
 	t.Parallel()
-	var bst = tree.NewBinary()
+	var binaryTreeObj = bst.NewBinary()
 
-	for i := 0; i < 20; i++ {
-		var value = rand.Intn(500)
-		bst.Insert(value)
+	for _, value := range []int{50, 7, 9, 60, 59, 61} {
+		binaryTreeObj.Insert(value)
 	}
 
 	var testcases = []struct {
@@ -40,8 +38,9 @@ func TestInsertAndSearch(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 
-			bst.Insert(tc.in)
-			var got = bst.Search(tc.v)
+			binaryTreeObj.Insert(tc.in)
+			var got = binaryTreeObj.Search(tc.v)
+			binaryTreeObj.LevelOrderTraversal()
 
 			if got != tc.want {
 				t.Fatalf("got %v want %v", got, tc.want)
