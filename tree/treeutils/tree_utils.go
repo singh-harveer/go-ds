@@ -138,3 +138,56 @@ func NodesCountIterative(node *tree.Node) int {
 
 	return nodesCount
 }
+
+func CountLeafNode(root *tree.Node) int {
+	if root == nil {
+		return 0
+	}
+	if root.Right == nil && root.Left == nil {
+		return 1
+	}
+
+	var leftCount = CountLeafNode(root.Left)
+	var rightCount = CountLeafNode(root.Right)
+	return leftCount + rightCount
+}
+
+func TopViewOfTree(root *tree.Node) {
+	var m = make(map[int][]int)
+	traverse(root, m, 0)
+
+	for _, v := range m {
+		fmt.Println(v[0])
+	}
+}
+
+func traverse(root *tree.Node, distanceMap map[int][]int, dist int) {
+	if root == nil {
+		return
+	}
+
+	var queue []*tree.Node
+	queue = append(queue, root)
+
+	for len(queue) > 0 {
+		var count = len(queue)
+
+		for count > 0 {
+			var current = queue[0] // pop
+			queue = queue[1:]      // remove
+
+			if _, ok := distanceMap[dist]; !ok {
+				distanceMap[dist] = []int{}
+			}
+			distanceMap[dist] = append(distanceMap[dist], current.Data)
+
+			if current.Left != nil {
+				traverse(current.Left, distanceMap, dist+1)
+			}
+			if current.Right != nil {
+				traverse(current.Right, distanceMap, dist-1)
+			}
+			count--
+		}
+	}
+}
