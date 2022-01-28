@@ -28,14 +28,14 @@ func main() {
 	root.Left.Right.Left = &tree.Node{Data: 14}
 	root.Left.Right.Right = &tree.Node{Data: 15}
 
-	// fmt.Println("--PreOrder--")
-	// treeutils.PreOrder(root)
-	// fmt.Println("\n--InOrder--")
-	// treeutils.InOrder(root)
-	// fmt.Println("\n--PostOrder--")
-	// treeutils.PostOrder(root)
-	// fmt.Println("\n--level order--")
-	// treeutils.LevelOrder(root)
+	fmt.Println("--PreOrder--")
+	treeutils.PreOrder(root)
+	fmt.Println("\n--InOrder--")
+	treeutils.InOrder(root)
+	fmt.Println("\n--PostOrder--")
+	treeutils.PostOrder(root)
+	fmt.Println("\n--level order--")
+	treeutils.LevelOrder(root)
 
 	var count = treeutils.NodesCountIterative(root)
 	fmt.Printf("Total node: %d\n", count)
