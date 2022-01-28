@@ -42,7 +42,7 @@ func TestHowConstruct(t *testing.T) {
 
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
-			var got = howConstruct(tc.target, tc.in)
+			var got = HowConstruct(tc.target, tc.in)
 			if cmp.Equal(got, tc.want) {
 				t.Fatalf("want %v got %v", tc.want, got)
 			}
