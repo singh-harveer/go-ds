@@ -36,7 +36,6 @@ func TestPairSum(t *testing.T) {
 			if !reflect.DeepEqual(got, tc.want) {
 				t.Fatalf("got %v want %v", got, tc.want)
 			}
-
 		})
 	}
 }

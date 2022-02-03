@@ -15,27 +15,6 @@ Output: No pair for provided sum
 
 arr = [1,2,3,4,5,6--1000]
 n *(n-1)/2
-
-
-
-n = 10
-
-500%10 = 0
-
-input []itn
-
-n = len(input)
-
-aux = make([]int, n)
-
-
-
-for num in input:
-	index = num % n
-	aux[index] = true
-
-
-
 **/
 
 func pairSum(target int, nums []int) []int {
@@ -51,7 +30,6 @@ func pairSum(target int, nums []int) []int {
 
 			return result
 		}
-
 		m[num] = struct{}{}
 	}
 
