@@ -10,11 +10,6 @@ Output: 1, 9
 
 array = [1,2,5,4]
 sum = 8
-
-Output: No pair for provided sum
-
-arr = [1,2,3,4,5,6--1000]
-n *(n-1)/2
 **/
 
 func pairSum(target int, nums []int) []int {
